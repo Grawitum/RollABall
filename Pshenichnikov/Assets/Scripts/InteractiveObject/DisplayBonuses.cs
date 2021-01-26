@@ -15,7 +15,14 @@ namespace RollABall
 
         public void Display(int value)
         {
-            _text.text = $"Вы набрали {value} очков";
+            try
+            {
+                _text.text = $"Вы набрали {value} очков";
+            }
+            catch
+            {
+                Debug.Log("Тестовое поле не найдено");
+            }
         }
     }
 }

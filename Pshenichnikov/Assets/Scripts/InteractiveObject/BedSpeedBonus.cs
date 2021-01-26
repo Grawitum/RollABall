@@ -21,7 +21,7 @@ namespace RollABall
         protected override void Interaction()
         {
             //base.Interaction();
-            playerBall.SpeedDown();
+            playerBall?.SpeedDown();
 
         }
         public void Fly()
