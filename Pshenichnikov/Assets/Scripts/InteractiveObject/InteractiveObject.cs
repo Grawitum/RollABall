@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 namespace RollABall
 {
-    public abstract class InteractiveObject : MonoBehaviour, IInteractable, IExecute;
+    public abstract class InteractiveObject : MonoBehaviour, IInteractable
     {
         protected Color _color;
         public bool IsInteractable { get; } = true;
