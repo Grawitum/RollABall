@@ -24,7 +24,7 @@ namespace RollABall
             if (speedUpOn)
             {
                 speedBonusTime -= 0.1f;
-                print(speedBonusTime);
+                //print(speedBonusTime);
                 if(speedBonusTime <= 0f)
                 {
                     SpeedNormal();
@@ -36,7 +36,7 @@ namespace RollABall
             if (speedDownOn)
             {
                 speedBedBonusTime -= 0.1f;
-                print(speedBedBonusTime);
+                //print(speedBedBonusTime);
                 if (speedBedBonusTime <= 0f)
                 {
                     SpeedNormal();

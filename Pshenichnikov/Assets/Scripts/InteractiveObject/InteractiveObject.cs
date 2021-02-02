@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -7,7 +8,19 @@ namespace RollABall
 {
     public abstract class InteractiveObject : MonoBehaviour, IInteractable
     {
+        protected Color _color;
         public bool IsInteractable { get; } = true;
+
+        //private event EventHandler<CaughtPlayerEventArgs> _useObject;
+        //public event EventHandler<CaughtPlayerEventArgs> UseObject
+        //{
+        //    add { _useObject += value; }
+        //    remove { _useObject -= value; }
+        //}
+
+        //public delegate void UseObject();
+
+
         protected abstract void Interaction();
 
         private void OnTriggerEnter(Collider other)
@@ -23,23 +36,15 @@ namespace RollABall
 
         private void Start()
         {
-            ((IAction)this).Action();
-            ((IInitialization)this).Action();
+            Action();
         }
 
-        void IAction.Action()
+        public void Action()
         {
+            _color = Random.ColorHSV();
             if (TryGetComponent(out Renderer renderer))
             {
-                renderer.material.color = Random.ColorHSV();
-            }
-        }
-
-        void IInitialization.Action()
-        {
-            if (TryGetComponent(out Renderer renderer))
-            {
-                renderer.material.color = Color.cyan;
+                renderer.material.color = _color;
             }
         }
     }

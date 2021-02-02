@@ -1,6 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace RollABall
 {
@@ -8,6 +8,22 @@ namespace RollABall
     {
         private float _lengthFly;
         private float _speedRotation;
+
+        private event EventHandler<CaughtPlayerEventArgs> _caughtPlayer;
+        public event EventHandler<CaughtPlayerEventArgs> CaughtPlayer
+        {
+            add { _caughtPlayer += value; }
+            remove { _caughtPlayer -= value; }
+        }
+
+        //public delegate void CaughtPlayerChange(object value);
+        //private event CaughtPlayerChange _caughtPlayer;
+        //public event CaughtPlayerChange CaughtPlayer
+        //{
+        //    add { _caughtPlayer += value; }
+        //    remove { _caughtPlayer -= value; }
+        //}
+
 
         private void Awake()
         {
@@ -17,9 +33,7 @@ namespace RollABall
 
         protected override void Interaction()
         {
-            //base.Interaction();
-            // Destroy player
-            print("BadCheck");
+            _caughtPlayer?.Invoke(this.gameObject, new CaughtPlayerEventArgs(_color));
         }
 
         public void Fly()

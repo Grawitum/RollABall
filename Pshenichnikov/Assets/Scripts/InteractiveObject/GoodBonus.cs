@@ -12,6 +12,9 @@ namespace RollABall
         private DisplayBonuses _displayBonuses;
         private GoodBonus[] _goodBonus;
 
+        public delegate void EventUseObject();
+        public event EventUseObject _useObject;
+
         private void Awake()
         {
             _material = GetComponent<Renderer>().material;
@@ -24,6 +27,7 @@ namespace RollABall
             //base.Interaction();
             _displayBonuses.Display(Point);
             _goodBonus = FindObjectsOfType<GoodBonus>();
+            _useObject?.Invoke();
             //print(_goodBonus.Length);
             if (_goodBonus.Length <= 1)
             {
