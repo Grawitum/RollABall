@@ -62,25 +62,28 @@
     <Compile Include="Assets\Scripts\InteractiveObject\Interface\Fly.cs" />
     <Compile Include="Assets\Scripts\InteractiveObject\GoodBonusComparer.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
+    <Compile Include="Assets\Scripts\InteractiveObject\Interface\IExecute.cs" />
     <Compile Include="Assets\Scripts\Model\PlayerBase.cs" />
     <Compile Include="Assets\Scripts\InteractiveObject\InteractiveObject.cs" />
     <Compile Include="Assets\Scripts\InteractiveObject\Interface\Action.cs" />
     <Compile Include="Assets\Scripts\SavedData.cs" />
     <Compile Include="Assets\Scripts\Model\PlayerBall.cs" />
+    <Compile Include="Assets\Scripts\InputController.cs" />
+    <Compile Include="Assets\Scripts\Reference.cs" />
     <Compile Include="Assets\Scripts\InteractiveObject\BedSpeedBonus.cs" />
     <Compile Include="Assets\Scripts\InteractiveObject\Interface\Rotation.cs" />
     <Compile Include="Assets\Scripts\InteractiveObject\Interface\Interactable.cs" />
     <Compile Include="Assets\Scripts\InteractiveObject\SpeedBonus.cs" />
     <Compile Include="Assets\Scripts\DisplayEndGame.cs" />
-    <Compile Include="Assets\Scripts\ExampleUnityEvent.cs" />
     <Compile Include="Assets\Scripts\InteractiveObject\Interface\Flicker.cs" />
     <Compile Include="Assets\Scripts\InteractiveObject\Interface\Initialization.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraController.cs" />
-    <Compile Include="Assets\Scripts\InteractiveObject\GoodBonus.cs" />
-    <Compile Include="Assets\Scripts\Reference.cs" />
-    <Compile Include="Assets\Scripts\InteractiveObject\Interface\IExecute.cs" />
-    <Compile Include="Assets\Scripts\InputController.cs" />
     <Compile Include="Assets\Scripts\PlayerType.cs" />
+    <Compile Include="Assets\Scripts\InteractiveObject\GoodBonus.cs" />
+    <Compile Include="Assets\Scripts\InteractiveObject\ListInteractableObject.cs" />
+    <Compile Include="Assets\Scripts\ListExecuteObject.cs" />
+    <Compile Include="Assets\Scripts\AxisManager.cs" />
+    <Compile Include="Assets\Scripts\InteractiveObject\ImmortalityBonus.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\HW3\HW3.txt" />

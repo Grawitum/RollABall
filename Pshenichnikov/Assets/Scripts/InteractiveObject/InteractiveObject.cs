@@ -38,7 +38,7 @@ namespace RollABall
         private void Start()
         {
             IsInteractable = true;
-            _color = ColorHSV();
+            _color = Random.ColorHSV();
             if (TryGetComponent(out Renderer renderer))
             {
                 renderer.material.color = _color;

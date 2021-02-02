@@ -20,8 +20,11 @@ namespace RollABall
 
         protected override void Interaction()
         {
-            //base.Interaction();
-            playerBall?.SpeedDown();
+            if(playerBall == null)
+            {
+                playerBall = FindObjectOfType<PlayerBall>();
+            }
+            playerBall.Speed -= 1.0f;
 
         }
         public void Fly()
@@ -34,6 +37,13 @@ namespace RollABall
         public void Rotation()
         {
             transform.Rotate(Vector3.up * (Time.deltaTime * _speedRotation), Space.World);
+        }
+
+        public override void Execute()
+        {
+            if (!IsInteractable) { return; }
+            Fly();
+            Rotation();
         }
     }
 }

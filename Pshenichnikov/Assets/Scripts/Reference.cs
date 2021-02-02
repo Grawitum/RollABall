@@ -21,6 +21,10 @@ namespace RollABall
             {
                 if (_playerBall == null)
                 {
+                    if (!Resources.Load<GameObject>("Player").GetComponent<PlayerBall>())
+                    {
+                        Resources.Load<GameObject>("Player").AddComponent<PlayerBall>();
+                    }
                     var gameObject = Resources.Load<PlayerBall>("Player");
                     _playerBall = Object.Instantiate(gameObject);
                 }
@@ -47,6 +51,8 @@ namespace RollABall
             {
                 if (_canvas == null)
                 {
+                    var gameObject = Resources.Load<GameObject>("UI/Canvas");
+                    Object.Instantiate(gameObject);
                     _canvas = Object.FindObjectOfType<Canvas>();
                 }
                 return _canvas;

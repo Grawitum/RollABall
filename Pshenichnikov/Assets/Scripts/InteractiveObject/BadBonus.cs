@@ -40,7 +40,7 @@ namespace RollABall
         public override void Execute()
         {
             if (!IsInteractable) { return; }
-            Flay();
+            Fly();
             Rotation();
         }
 

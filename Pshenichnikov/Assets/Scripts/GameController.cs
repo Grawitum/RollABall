@@ -35,6 +35,8 @@ namespace RollABall
 
             _reference = new Reference();
 
+            //_reference.Map;
+
             PlayerBase player = null;
             if(PlayerType == PlayerType.Ball)
             {
@@ -98,6 +100,7 @@ namespace RollABall
 
         private void Update()
         {
+            var deltaTime = Time.deltaTime;
             for (var i = 0; i < _interactiveObject.Length; i++)
             {
                 var interactiveObject = _interactiveObject[i];
@@ -107,6 +110,7 @@ namespace RollABall
                     continue;
                 }
                 interactiveObject.Execute();
+                //interactiveObject.Execute(deltaTime);
             }
         }
 
