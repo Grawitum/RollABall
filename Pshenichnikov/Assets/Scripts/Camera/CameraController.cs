@@ -2,42 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 namespace RollABall
 {
-    public sealed class CameraController : MonoBehaviour
+    public sealed class CameraController : IExecute
     {
-        public Player Player;
+        private Transform _player;
+        private Transform _mainCamera;
         private Vector3 _offset;
-        public GameObject Particle;
 
-        private void Start()
+        public CameraController(Transform player, Transform mainCamera)
         {
-            try
-            {
-                _offset = transform.position - Player.transform.position;
-            }
-            catch
-            {
-                print("игрок не найден");
-            }
+            _player = player;
+            _mainCamera = mainCamera;
+            _mainCamera.LookAt(_player);
+            _offset = _mainCamera.position - _player.position;
         }
 
-        private void LateUpdate ()// вынести в класс
+        public void Execute()
         {
-            try
-            {
-                transform.position = Player.transform.position + _offset;
-            }
-            catch
-            {
-                print("игрок не найден");
-            }
+            _mainCamera.position = _player.position + _offset;
         }
-
-        public void Test()
-        {
-            Instantiate(Particle, Player.transform);
-        }
-
     }
 }
