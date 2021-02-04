@@ -18,5 +18,10 @@ namespace RollABall
         {
             _finishGameLabel.text = $"Вы проиграли. Вас убил {name} {color} цвета";
         }
+
+        public void GameWin (int point)
+        {
+            _finishGameLabel.text = $"Вы выйграли! Собрав {point} очков.";
+        }
     }
 }

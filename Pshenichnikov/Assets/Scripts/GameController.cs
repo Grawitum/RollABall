@@ -17,6 +17,9 @@ namespace RollABall
         private CameraController _cameraController;
         private InputController _inputController;
         private Reference _reference;
+        private MapFactory _mapFactory;
+        private InteractiveObjectFactory _interactiveObjectFactory; 
+        private int allPoint;
 
         private int _countBonuses;
 
@@ -31,17 +34,32 @@ namespace RollABall
 
         private void Awake()
         {
+            _interactiveObjectFactory = new InteractiveObjectFactory();
+            GameObject bonus = null;
+            bonus = _interactiveObjectFactory.GoodBonus;
+
+            GameObject useBonus = null;
+            useBonus = _interactiveObjectFactory.UseBonus;
+
             _interactiveObject = new ListExecuteObject();
 
             _reference = new Reference();
+            _mapFactory = new MapFactory();
+            //_interactiveObjectFactory = new InteractiveObjectFactory();
 
-            //_reference.Map;
+            //_reference.Map;  фактори с авэйком, туда карту и бонусы
 
             PlayerBase player = null;
             if(PlayerType == PlayerType.Ball)
             {
                 player = _reference.PlayerBall;
             }
+
+            GameObject map = null;
+            map = _mapFactory.Map;
+
+            //GameObject bonus = null;
+            //bonus = _interactiveObjectFactory.GoodBonus;
 
             _cameraController = new CameraController(player.transform, _reference.MainCamera.transform);
             _interactiveObject.AddExecuteObject(_cameraController);
@@ -64,6 +82,8 @@ namespace RollABall
 
                 if (o is GoodBonus goodBonus)
                 {
+                    allPoint += goodBonus.Point;
+                    //print(allPoint);
                     goodBonus.OnPointChange += AddBonuse;
                 }
             }
@@ -96,6 +116,11 @@ namespace RollABall
         {
             _countBonuses += value;
             _displayBonuses.Display(_countBonuses);
+            if(_countBonuses >= allPoint)
+            {
+                _displayEndGame.GameWin(_countBonuses);
+                Time.timeScale = 0.0f;
+            }
         }
 
         private void Update()

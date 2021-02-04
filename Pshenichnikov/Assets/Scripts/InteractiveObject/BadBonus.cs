@@ -9,32 +9,34 @@ namespace RollABall
         public event Action<string, Color> OnCaughtPlayerChange = delegate (string str, Color color) { };
         private float _lengthFly;
         private float _speedRotation;
-
-        //private event EventHandler<CaughtPlayerEventArgs> _caughtPlayer;
-        //public event EventHandler<CaughtPlayerEventArgs> CaughtPlayer
-        //{
-        //    add { _caughtPlayer += value; }
-        //    remove { _caughtPlayer -= value; }
-        //}
-
-        //public delegate void CaughtPlayerChange(object value);
-        //private event CaughtPlayerChange _caughtPlayer;
-        //public event CaughtPlayerChange CaughtPlayer
-        //{
-        //    add { _caughtPlayer += value; }
-        //    remove { _caughtPlayer -= value; }
-        //}
-
+        private PlayerBall playerBall;
 
         private void Awake()
         {
             _lengthFly = Random.Range(1.0f, 5.0f);
             _speedRotation = Random.Range(10.0f, 50.0f);
+            FindPlayer();
         }
 
         protected override void Interaction()
         {
-            OnCaughtPlayerChange.Invoke(gameObject.name, _color);
+            if (playerBall == null)
+            {
+                FindPlayer();
+            }
+            if (!playerBall.Immortality)
+            {
+                OnCaughtPlayerChange.Invoke(gameObject.name, _color);
+            }
+            else
+            {
+                print("Immortality");
+            }
+        }
+
+        private void FindPlayer()
+        {
+            playerBall = FindObjectOfType<PlayerBall>();
         }
 
         public override void Execute()

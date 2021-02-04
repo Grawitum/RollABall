@@ -20,6 +20,7 @@ namespace RollABall
 
         private void Awake()
         {
+            Point = Range(1, 6);
             _material = GetComponent<Renderer>().material;
             _lengthFly = Range(1.0f, 5.0f);
         }
