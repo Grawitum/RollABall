@@ -6,46 +6,44 @@ using Random = UnityEngine.Random;
 
 namespace RollABall
 {
-    public abstract class InteractiveObject : MonoBehaviour, IInteractable
+    public abstract class InteractiveObject : MonoBehaviour, IExecute
     {
         protected Color _color;
-        public bool IsInteractable { get; } = true;
+        private bool _isInteractable;
 
-        //private event EventHandler<CaughtPlayerEventArgs> _useObject;
-        //public event EventHandler<CaughtPlayerEventArgs> UseObject
-        //{
-        //    add { _useObject += value; }
-        //    remove { _useObject -= value; }
-        //}
-
-        //public delegate void UseObject();
-
-
-        protected abstract void Interaction();
+        protected bool IsInteractable
+        {
+            get { return _isInteractable; }
+            private set
+            {
+                _isInteractable = value;
+                GetComponent<Renderer>().enabled = _isInteractable;
+                GetComponent<Collider>().enabled = _isInteractable;
+            }
+        }
 
         private void OnTriggerEnter(Collider other)
         {
             if (!IsInteractable || !other.CompareTag("Player"))
-            //if (!other.CompareTag("Player"))
             {
                 return;
             }
             Interaction();
-            Destroy(gameObject);
+            IsInteractable = false;
         }
+
+        protected abstract void Interaction();
+        public abstract void Execute();
 
         private void Start()
         {
-            Action();
-        }
-
-        public void Action()
-        {
+            IsInteractable = true;
             _color = Random.ColorHSV();
             if (TryGetComponent(out Renderer renderer))
             {
                 renderer.material.color = _color;
             }
         }
+
     }
 }

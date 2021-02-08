@@ -19,9 +19,12 @@ namespace RollABall
 
         protected override void Interaction()
         {
-            //base.Interaction();
-            playerBall.SpeedUP();
-            
+            if (playerBall == null)
+            {
+                playerBall = FindObjectOfType<PlayerBall>();
+            }
+            playerBall.Speed += 1;
+
         }
         public void Fly()
         {
@@ -34,6 +37,13 @@ namespace RollABall
         {
             _material.color = new Color(_material.color.r, _material.color.g, _material.color.b,
                 Mathf.PingPong(Time.time, 1.0f));
+        }
+
+        public override void Execute()
+        {
+            if(!IsInteractable) { return; }
+            Fly();
+            Flicker();
         }
     }
 }

@@ -4,91 +4,129 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 namespace RollABall
 {
     public sealed class GameController : MonoBehaviour, IDisposable
     {
-        private InteractiveObject[] _interactiveObjects;
-        public GameObject Particle;
-
-        public Text _finishGameLabel;
+        public PlayerType PlayerType = PlayerType.Ball;
+        private ListExecuteObject _interactiveObject;
         private DisplayEndGame _displayEndGame;
+        private DisplayBonuses _displayBonuses;
         private CameraController _cameraController;
+        private InputController _inputController;
+        private Reference _reference;
 
-        public Player player;
+        private int _countBonuses;
+
+        //private InteractiveObject[] _interactiveObjects;
+        //public GameObject Particle;
+
+        //public Text _finishGameLabel;
+        //private DisplayEndGame _displayEndGame;
+        //private CameraController _cameraController;
+
+        //public Player player;
 
         private void Awake()
         {
-            _interactiveObjects = FindObjectsOfType<InteractiveObject>();
-            _displayEndGame = new DisplayEndGame(_finishGameLabel);
-            foreach (var o in _interactiveObjects)
+            _interactiveObject = new ListExecuteObject();
+
+            _reference = new Reference();
+
+            //_reference.Map;
+
+            PlayerBase player = null;
+            if(PlayerType == PlayerType.Ball)
             {
-                if (o is GoodBonus goodBonus)
-                {
-                    goodBonus._useObject +=Test;
-                }
+                player = _reference.PlayerBall;
+            }
+
+            _cameraController = new CameraController(player.transform, _reference.MainCamera.transform);
+            _interactiveObject.AddExecuteObject(_cameraController);
+
+            if (Application.platform == RuntimePlatform.WindowsEditor)
+            {
+                _inputController = new InputController(player);
+                _interactiveObject.AddExecuteObject(_inputController);
+            }
+
+            _displayEndGame = new DisplayEndGame(_reference.EndGame);
+            _displayBonuses = new DisplayBonuses(_reference.Bonuse);
+            foreach (var o in _interactiveObject)
+            {
                 if (o is BadBonus badBonus)
                 {
-                    badBonus.CaughtPlayer += CaughtPlayer;
-                    badBonus.CaughtPlayer += _displayEndGame.GameOver;
-                    badBonus.CaughtPlayer += (sender, args) =>
-                    {
-                        Debug.Log($"Вы проиграли. Вас убил {(o).name} {args.Color} цвета");
-                    };
+                    badBonus.OnCaughtPlayerChange += CaughtPlayer;
+                    badBonus.OnCaughtPlayerChange += _displayEndGame.GameOver;
+                }
+
+                if (o is GoodBonus goodBonus)
+                {
+                    goodBonus.OnPointChange += AddBonuse;
                 }
             }
 
+            _reference.RestartButton.onClick.AddListener(RestartGame);
+            _reference.RestartButton.gameObject.SetActive(false);
+
+
+
         }
 
-        public void Test()
-        { 
-            Instantiate(Particle,new Vector3(player.transform.position.x,player.transform.position.y), Quaternion.identity);
-        }
+        //public void Test()
+        //{ 
+        //    Instantiate(Particle,new Vector3(player.transform.position.x,player.transform.position.y), Quaternion.identity);
+        //}
 
-        private void CaughtPlayer(object value, CaughtPlayerEventArgs args)
+        private void RestartGame()
         {
+            SceneManager.LoadScene(sceneBuildIndex: 0);
+            Time.timeScale = 1.0f;
+        }
+
+        private void CaughtPlayer(string value, Color args)
+        {
+            _reference.RestartButton.gameObject.SetActive(true);
             Time.timeScale = 0.0f;
+        }
+
+        private void AddBonuse(int value)
+        {
+            _countBonuses += value;
+            _displayBonuses.Display(_countBonuses);
         }
 
         private void Update()
         {
-            for (var i = 0; i < _interactiveObjects.Length; i++)
+            var deltaTime = Time.deltaTime;
+            for (var i = 0; i < _interactiveObject.Length; i++)
             {
-                var interactiveObject = _interactiveObjects[i];
+                var interactiveObject = _interactiveObject[i];
 
                 if (interactiveObject == null)
                 {
                     continue;
                 }
-
-                if (interactiveObject is IFly fly)
-                {
-                    fly.Fly();
-                }
-                if (interactiveObject is IFlicker flicker)
-                {
-                    flicker.Flicker();
-                }
-                if (interactiveObject is IRotation rotation)
-                {
-                    rotation.Rotation();
-                }
+                interactiveObject.Execute();
+                //interactiveObject.Execute(deltaTime);
             }
         }
 
         public void Dispose()
         {
-            foreach (var o in _interactiveObjects)
+            foreach (var o in _interactiveObject)
             {
-                if (o is InteractiveObject interactiveObject)
+                if (o is BadBonus badBonus)
                 {
-                    if (o is BadBonus badBonus)
-                    {
-                        badBonus.CaughtPlayer -= CaughtPlayer;
-                        badBonus.CaughtPlayer -= _displayEndGame.GameOver;
-                    }
-                    Destroy(interactiveObject.gameObject);
+                    badBonus.OnCaughtPlayerChange -= CaughtPlayer;
+                    badBonus.OnCaughtPlayerChange -= _displayEndGame.GameOver;
+                }
+
+                if (o is GoodBonus goodBonus)
+                {
+                    goodBonus.OnPointChange -= AddBonuse;
                 }
             }
         }

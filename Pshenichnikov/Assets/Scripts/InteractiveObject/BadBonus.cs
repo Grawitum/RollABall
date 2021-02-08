@@ -6,15 +6,16 @@ namespace RollABall
 {
     public sealed class BadBonus : InteractiveObject, IFly, IRotation
     {
+        public event Action<string, Color> OnCaughtPlayerChange = delegate (string str, Color color) { };
         private float _lengthFly;
         private float _speedRotation;
 
-        private event EventHandler<CaughtPlayerEventArgs> _caughtPlayer;
-        public event EventHandler<CaughtPlayerEventArgs> CaughtPlayer
-        {
-            add { _caughtPlayer += value; }
-            remove { _caughtPlayer -= value; }
-        }
+        //private event EventHandler<CaughtPlayerEventArgs> _caughtPlayer;
+        //public event EventHandler<CaughtPlayerEventArgs> CaughtPlayer
+        //{
+        //    add { _caughtPlayer += value; }
+        //    remove { _caughtPlayer -= value; }
+        //}
 
         //public delegate void CaughtPlayerChange(object value);
         //private event CaughtPlayerChange _caughtPlayer;
@@ -33,7 +34,14 @@ namespace RollABall
 
         protected override void Interaction()
         {
-            _caughtPlayer?.Invoke(this.gameObject, new CaughtPlayerEventArgs(_color));
+            OnCaughtPlayerChange.Invoke(gameObject.name, _color);
+        }
+
+        public override void Execute()
+        {
+            if (!IsInteractable) { return; }
+            Fly();
+            Rotation();
         }
 
         public void Fly()
