@@ -62,11 +62,14 @@
     <Compile Include="Assets\Scripts\InteractiveObject\DisplayBonuses.cs" />
     <Compile Include="Assets\Scripts\InteractiveObject\Interface\Fly.cs" />
     <Compile Include="Assets\Scripts\InteractiveObject\GoodBonusComparer.cs" />
+    <Compile Include="Assets\Scripts\MapFactory.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
+    <Compile Include="Assets\HW5\HW5Main.cs" />
     <Compile Include="Assets\Scripts\AxisManager.cs" />
     <Compile Include="Assets\Scripts\InteractiveObject\Interface\IExecute.cs" />
     <Compile Include="Assets\Scripts\Model\PlayerBase.cs" />
     <Compile Include="Assets\Scripts\InteractiveObject\InteractiveObject.cs" />
+    <Compile Include="Assets\HW5\MyExpansion.cs" />
     <Compile Include="Assets\Scripts\InteractiveObject\Interface\Action.cs" />
     <Compile Include="Assets\Scripts\SavedData.cs" />
     <Compile Include="Assets\Scripts\Model\PlayerBall.cs" />
@@ -78,17 +81,19 @@
     <Compile Include="Assets\Scripts\InteractiveObject\Interface\Interactable.cs" />
     <Compile Include="Assets\Scripts\InteractiveObject\SpeedBonus.cs" />
     <Compile Include="Assets\Scripts\DisplayEndGame.cs" />
+    <Compile Include="Assets\HW5\HW5Task2.cs" />
+    <Compile Include="Assets\Scripts\InteractiveObjectFactory.cs" />
     <Compile Include="Assets\Scripts\ListExecuteObject.cs" />
     <Compile Include="Assets\Scripts\InteractiveObject\Interface\Flicker.cs" />
     <Compile Include="Assets\Scripts\InteractiveObject\Interface\Initialization.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraController.cs" />
     <Compile Include="Assets\Scripts\PlayerType.cs" />
     <Compile Include="Assets\Scripts\InteractiveObject\GoodBonus.cs" />
-    <Compile Include="Assets\Scripts\MapFactory.cs" />
-    <Compile Include="Assets\Scripts\InteractiveObjectFactory.cs" />
+    <Compile Include="Assets\HW5\HW5Task3.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\HW3\HW3.txt" />
+     <None Include="Assets\HW5\HW5.txt" />
      <None Include="Assets\HW2\HW2.txt" />
     <Reference Include="UnityEngine">
       <HintPath>D:\Unity\2020.1.12f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>

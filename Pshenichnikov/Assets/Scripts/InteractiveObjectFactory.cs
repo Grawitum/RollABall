@@ -61,7 +61,7 @@ namespace RollABall
                         if(i.name == "Bonus")
                         {
                             rBonus = Range(1, 5);
-                            Debug.Log(rBonus);
+                            //Debug.Log(rBonus);
                             switch (rBonus)
                             {
                                 case 1:
