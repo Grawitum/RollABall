@@ -21,6 +21,11 @@ namespace RollABall
             return Boolean.TryParse(self, out var res) && res;
         }
 
+        public static Single TrySingle(this string self) // Проверка на какое булевское значение находится в строке
+        {
+            return Single.Parse(self);
+        }
+
         public static bool IsOneOf<T>(this T self, params T[] elem)  //указывающее, встречается ли указанный символ внутри этой строки, используя указанные правила сравнения.
         {
             return elem.Contains(self);
