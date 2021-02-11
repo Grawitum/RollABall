@@ -9,9 +9,9 @@ namespace RollABall
     {
         void Start()
         {
-            Task2();
-            Task3();
-            Task4();
+            //Task2();
+            //Task3();
+            //Task4();
         }
 
         private void Task2()

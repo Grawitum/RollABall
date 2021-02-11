@@ -8,7 +8,7 @@ namespace RollABall
         private readonly IData<SavedData> _data;
 
         private const string _folderName = "dataSave";
-        private const string _fileName = "data.bat";
+        private const string _fileName = "playerData.bat";
         private readonly string _path;
 
         public SaveDataRepository()
@@ -34,8 +34,8 @@ namespace RollABall
             var savePlayer = new SavedData
             {
                 Position = player.transform.position,
-                Name = "Roman",
-                IsEnabled = true
+                Name = player.name,
+                IsEnabled = player.enabled
             };
 
             _data.Save(savePlayer, Path.Combine(_path, _fileName));
@@ -49,8 +49,6 @@ namespace RollABall
             player.transform.position = newPlayer.Position;
             player.name = newPlayer.Name;
             player.gameObject.SetActive(newPlayer.IsEnabled);
-
-            Debug.Log(newPlayer);
         }
     }
 
