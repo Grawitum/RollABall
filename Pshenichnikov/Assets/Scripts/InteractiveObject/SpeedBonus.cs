@@ -14,17 +14,21 @@ namespace RollABall
         {
             _material = GetComponent<Renderer>().material;
             _lengthFly = Random.Range(1.0f, 3.0f);
-            playerBall = FindObjectOfType<PlayerBall>();
+            FindPlayer();
         }
 
         protected override void Interaction()
         {
             if (playerBall == null)
             {
-                playerBall = FindObjectOfType<PlayerBall>();
+                FindPlayer();
             }
             playerBall.Speed += 1;
+        }
 
+        private void FindPlayer()
+        {
+            playerBall = FindObjectOfType<PlayerBall>();
         }
         public void Fly()
         {

@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637462458898994510
-    m_Hash: 382242050
+      ticks: 637483876421929184
+    m_Hash: 4153214356
   m_LockFileStatus:
     m_FilePath: D:/RollABall/RollABall/Pshenichnikov/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637462458952475317
-    m_Hash: 1658522720
+      ticks: 637483876421989284
+    m_Hash: 2070956470
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:

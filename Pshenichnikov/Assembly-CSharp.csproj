@@ -56,37 +56,56 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\BinarySerializationData.cs" />
+    <Compile Include="Assets\Scripts\XMLData.cs" />
     <Compile Include="Assets\Scripts\CaughtPlayerEventArgs.cs" />
     <Compile Include="Assets\Scripts\InteractiveObject\BadBonus.cs" />
+    <Compile Include="Assets\Scripts\InteractiveObject\ImmortalityBonus.cs" />
+    <Compile Include="Assets\Scripts\SaveDataRepository.cs" />
     <Compile Include="Assets\Scripts\InteractiveObject\DisplayBonuses.cs" />
-    <Compile Include="Assets\Scripts\InteractiveObject\Interface\Fly.cs" />
+    <Compile Include="Assets\Scripts\PlayerPrefsData.cs" />
+    <Compile Include="Assets\Scripts\Interface\Fly.cs" />
     <Compile Include="Assets\Scripts\InteractiveObject\GoodBonusComparer.cs" />
+    <Compile Include="Assets\Scripts\MapFactory.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
-    <Compile Include="Assets\Scripts\InteractiveObject\Interface\IExecute.cs" />
+    <Compile Include="Assets\Scripts\MiniMap.cs" />
+    <Compile Include="Assets\Scripts\StreamData.cs" />
+    <Compile Include="Assets\HW5\HW5Main.cs" />
+    <Compile Include="Assets\Scripts\AxisManager.cs" />
+    <Compile Include="Assets\Scripts\SerializableXMLData.cs" />
+    <Compile Include="Assets\Scripts\Interface\IExecute.cs" />
     <Compile Include="Assets\Scripts\Model\PlayerBase.cs" />
     <Compile Include="Assets\Scripts\InteractiveObject\InteractiveObject.cs" />
-    <Compile Include="Assets\Scripts\InteractiveObject\Interface\Action.cs" />
+    <Compile Include="Assets\HW5\HW5Task3.cs" />
+    <Compile Include="Assets\Scripts\Crypto.cs" />
+    <Compile Include="Assets\HW5\MyExpansion.cs" />
+    <Compile Include="Assets\Scripts\Interface\Action.cs" />
     <Compile Include="Assets\Scripts\SavedData.cs" />
     <Compile Include="Assets\Scripts\Model\PlayerBall.cs" />
+    <Compile Include="Assets\Scripts\InteractiveObject\ListInteractableObject.cs" />
     <Compile Include="Assets\Scripts\InputController.cs" />
     <Compile Include="Assets\Scripts\Reference.cs" />
     <Compile Include="Assets\Scripts\InteractiveObject\BedSpeedBonus.cs" />
-    <Compile Include="Assets\Scripts\InteractiveObject\Interface\Rotation.cs" />
-    <Compile Include="Assets\Scripts\InteractiveObject\Interface\Interactable.cs" />
+    <Compile Include="Assets\Scripts\Interface\Rotation.cs" />
+    <Compile Include="Assets\Scripts\Interface\Interactable.cs" />
     <Compile Include="Assets\Scripts\InteractiveObject\SpeedBonus.cs" />
     <Compile Include="Assets\Scripts\DisplayEndGame.cs" />
-    <Compile Include="Assets\Scripts\InteractiveObject\Interface\Flicker.cs" />
-    <Compile Include="Assets\Scripts\InteractiveObject\Interface\Initialization.cs" />
+    <Compile Include="Assets\HW5\HW5Task2.cs" />
+    <Compile Include="Assets\Scripts\InteractiveObjectFactory.cs" />
+    <Compile Include="Assets\Scripts\ListExecuteObject.cs" />
+    <Compile Include="Assets\Scripts\Interface\IData.cs" />
+    <Compile Include="Assets\Scripts\Interface\Flicker.cs" />
+    <Compile Include="Assets\Scripts\Interface\Initialization.cs" />
+    <Compile Include="Assets\Scripts\JsonData.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraController.cs" />
     <Compile Include="Assets\Scripts\PlayerType.cs" />
     <Compile Include="Assets\Scripts\InteractiveObject\GoodBonus.cs" />
-    <Compile Include="Assets\Scripts\InteractiveObject\ListInteractableObject.cs" />
-    <Compile Include="Assets\Scripts\ListExecuteObject.cs" />
-    <Compile Include="Assets\Scripts\AxisManager.cs" />
-    <Compile Include="Assets\Scripts\InteractiveObject\ImmortalityBonus.cs" />
+    <Compile Include="Assets\Scripts\SaveGoodDataRepository.cs" />
+    <Compile Include="Assets\Scripts\SaveBedDataRepository.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\HW3\HW3.txt" />
+     <None Include="Assets\HW5\HW5.txt" />
      <None Include="Assets\HW2\HW2.txt" />
     <Reference Include="UnityEngine">
       <HintPath>D:\Unity\2020.1.12f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>

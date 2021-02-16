@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace RollABall
 {
-    public sealed class BedSpeedBonus : InteractiveObject, IFly, IRotation
+    public sealed class BadSpeedBonus : InteractiveObject, IFly, IRotation
     {
         private float _speedRotation;
         private float _lengthFly;
@@ -15,18 +15,23 @@ namespace RollABall
         {
             _speedRotation = Random.Range(10.0f, 50.0f);
             _lengthFly = Random.Range(1.0f, 3.0f);
-            playerBall = FindObjectOfType<PlayerBall>();
+            FindPlayer();
         }
 
         protected override void Interaction()
         {
             if(playerBall == null)
             {
-                playerBall = FindObjectOfType<PlayerBall>();
+                FindPlayer();
             }
             playerBall.Speed -= 1.0f;
-
         }
+
+        private void FindPlayer()
+        {
+            playerBall = FindObjectOfType<PlayerBall>();
+        }
+
         public void Fly()
         {
             transform.localPosition = new Vector3(transform.localPosition.x,
