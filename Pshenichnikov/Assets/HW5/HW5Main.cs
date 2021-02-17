@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using System;
 
 namespace RollABall
 {
@@ -11,7 +12,7 @@ namespace RollABall
         {
             //Task2();
             //Task3();
-            //Task4();
+            Task4();
         }
 
         private void Task2()
@@ -43,11 +44,31 @@ namespace RollABall
                 { "one",1 },
                 {"three",3 },
             };
-                var d = dict.OrderBy(delegate (KeyValuePair<string, int> pair) { return pair.Value; });
-                foreach (var pair in d)
-                {
-                    Debug.Log($"{pair.Key} - {pair.Value}");
-                }
+            //foreach (var pair in dict)
+            //{
+            //    Debug.Log($"{pair.Key} - {pair.Value} ");
+            //}
+            var d = dict.OrderBy(delegate (KeyValuePair<string, int> pair) { return pair.Value; });
+            var d2 = from n in dict
+                     orderby n.Value ascending
+                     select n;
+            var d3 = dict.OrderBy(u => u.Value);
+
+            
+            foreach (var pair in d)
+            {
+                Debug.Log($"{pair.Key} - {pair.Value}");
+            }
+
+            foreach (var pair in d2)
+            {
+                Debug.Log($"{pair.Key} - {pair.Value}");
+            }
+
+            foreach (var pair in d3)
+            {
+                Debug.Log($"{pair.Key} - {pair.Value}");
+            }
 
         }
 

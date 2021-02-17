@@ -20,6 +20,7 @@ namespace RollABall
                     //    Debug.Log("Null");
                     //}
                     _goodBonus = Object.Instantiate(gameObject);
+                    //_goodBonus.GetComponent<GoodBonus>().path = "Map/GoodBonus";
                     Transform[] allGoodBonus = _goodBonus.GetComponentsInChildren<Transform>();
                     //foreach (Transform i in allGoodBonus)
                     //{
@@ -32,6 +33,7 @@ namespace RollABall
                         {
                             //Debug.Log("add");
                             allGoodBonus[i].gameObject.AddComponent<GoodBonus>();
+                            allGoodBonus[i].gameObject.GetComponent<GoodBonus>().path = "Map/GoodBonus";
                         }
                     }
 

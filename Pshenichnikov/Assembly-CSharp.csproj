@@ -76,6 +76,7 @@
     <Compile Include="Assets\Scripts\Interface\IExecute.cs" />
     <Compile Include="Assets\Scripts\Model\PlayerBase.cs" />
     <Compile Include="Assets\Scripts\InteractiveObject\InteractiveObject.cs" />
+    <Compile Include="Assets\Scripts\SaveBedDataRepository.cs" />
     <Compile Include="Assets\HW5\HW5Task3.cs" />
     <Compile Include="Assets\Scripts\Crypto.cs" />
     <Compile Include="Assets\HW5\MyExpansion.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Assets\Scripts\InteractiveObject\ListInteractableObject.cs" />
     <Compile Include="Assets\Scripts\InputController.cs" />
     <Compile Include="Assets\Scripts\Reference.cs" />
+    <Compile Include="Assets\HW7\MenuItems.cs" />
     <Compile Include="Assets\Scripts\InteractiveObject\BedSpeedBonus.cs" />
     <Compile Include="Assets\Scripts\Interface\Rotation.cs" />
     <Compile Include="Assets\Scripts\Interface\Interactable.cs" />
@@ -99,9 +101,11 @@
     <Compile Include="Assets\Scripts\JsonData.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraController.cs" />
     <Compile Include="Assets\Scripts\PlayerType.cs" />
+    <Compile Include="Assets\HW7\MyWindow.cs" />
     <Compile Include="Assets\Scripts\InteractiveObject\GoodBonus.cs" />
     <Compile Include="Assets\Scripts\SaveGoodDataRepository.cs" />
-    <Compile Include="Assets\Scripts\SaveBedDataRepository.cs" />
+    <Compile Include="Assets\HW7\MyScript.cs" />
+    <Compile Include="Assets\HW7\MyScriptEditor.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\HW3\HW3.txt" />

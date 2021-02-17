@@ -11,6 +11,9 @@ namespace RollABall
         private Material _material;
         private float _lengthFly;
 
+        [Tooltip("path")]
+        [SerializeField] public string path;
+
 
         //private DisplayBonuses _displayBonuses;
         //private GoodBonus[] _goodBonus;
