@@ -33,13 +33,6 @@ namespace RollABall
             OnPointChange.Invoke(Point);
         }
 
-        public override void Execute()
-        {
-            if (!IsInteractable) { return; }
-            Fly();
-            Flicker();
-        }
-
         public void Fly()
         {
             transform.localPosition = new Vector3(transform.localPosition.x,

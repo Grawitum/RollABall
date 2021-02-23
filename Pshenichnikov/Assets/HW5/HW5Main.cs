@@ -12,14 +12,14 @@ namespace RollABall
         {
             //Task2();
             //Task3();
-            Task4();
+            //Task4();
         }
 
         private void Task2()
         {
             string text = "123456789";
             int ch = text.СountingСharacters();
-            Debug.Log("HW5 task 2:  " + ch);
+            Debug.Log($"HW5 task 2: {ch}");
         }
 
         private void Task3()
@@ -28,10 +28,10 @@ namespace RollABall
             a.Add(5);
             a.Sort();
             var onlyInt = from n in a where n % 1 == 0 select n;
-            //Debug.Log( a.BinarySearch(1));
+            Debug.Log($" {a.BinarySearch(1)}");
             foreach(int i in onlyInt.Distinct())
             {
-                Debug.Log(i + " - " + onlyInt.Where(x => x == i).Count() + " Раз");
+                Debug.Log($"{i} - {onlyInt.Where(x => x == i).Count()} Раз");
             }
         }
 

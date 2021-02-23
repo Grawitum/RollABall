@@ -12,7 +12,6 @@ namespace RollABall
             PlayerPrefs.SetFloat("PosZ", data.Position.Z);
             PlayerPrefs.SetString("IsEnable", data.IsEnabled.ToString());
 
-            //-----------------------------
             PlayerPrefs.Save();
         }
 

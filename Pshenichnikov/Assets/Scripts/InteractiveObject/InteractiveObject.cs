@@ -6,19 +6,21 @@ using Random = UnityEngine.Random;
 
 namespace RollABall
 {
-    public abstract class InteractiveObject : MonoBehaviour, IExecute
+    public abstract class InteractiveObject : MonoBehaviour
     {
         protected Color _color;
         private bool _isInteractable;
+        Dictionary<object, bool> _cache = new Dictionary<object, bool>();
 
         protected bool IsInteractable
         {
-            get { return _isInteractable; }
+            get { return _cache[0]; }
             private set
             {
                 _isInteractable = value;
                 GetComponent<Renderer>().enabled = _isInteractable;
                 GetComponent<Collider>().enabled = _isInteractable;
+                _cache[0] = _isInteractable;
             }
         }
 
@@ -33,7 +35,7 @@ namespace RollABall
         }
 
         protected abstract void Interaction();
-        public abstract void Execute();
+        //public abstract void Execute();
 
         private void Start()
         {

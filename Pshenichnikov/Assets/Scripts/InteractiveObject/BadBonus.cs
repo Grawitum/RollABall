@@ -30,7 +30,7 @@ namespace RollABall
             }
             else
             {
-                print("Immortality");
+                print($"Immortality");
             }
         }
 
@@ -39,12 +39,12 @@ namespace RollABall
             playerBall = FindObjectOfType<PlayerBall>();
         }
 
-        public override void Execute()
-        {
-            if (!IsInteractable) { return; }
-            Fly();
-            Rotation();
-        }
+        //public override void Execute()
+        //{
+        //    if (!IsInteractable) { return; }
+        //    Fly();
+        //    Rotation();
+        //}
 
         public void Fly()
         {
