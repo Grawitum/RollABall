@@ -7,10 +7,12 @@ namespace RollABall
     public class ExecutController : IExecute
     {
         private ListInteractiveObject _interactiveObject;
+        private ListExecuteObject _executeObject;
 
-        public ExecutController(ListInteractiveObject interactiveObject)
+        public ExecutController(PlayerBase player, CameraController cameraController)
         {
-            _interactiveObject = interactiveObject;
+            _interactiveObject = new ListInteractiveObject();
+            _executeObject = new ListExecuteObject(player, cameraController);
         }
 
         public void Execute(float deltaTime)
@@ -35,6 +37,16 @@ namespace RollABall
                 {
                     flicerObject.Flicker();
                 }
+            }
+            for (var i = 0; i < _executeObject.Length; i++)
+            {
+                var executeObject = _executeObject[i];
+
+                if (executeObject == null)
+                {
+                    continue;
+                }
+                executeObject.Execute(deltaTime);
             }
         }
     }

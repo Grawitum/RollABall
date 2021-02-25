@@ -15,7 +15,7 @@ namespace RollABall
 
 
 
-        public ListExecuteObject(PlayerBase player)
+        public ListExecuteObject(PlayerBase player,CameraController cameraController)
         {
             var interactiveObjects = Object.FindObjectsOfType<InteractiveObject>();
             for (var i = 0; i < interactiveObjects.Length; i++)
@@ -31,6 +31,8 @@ namespace RollABall
                 _inputController = new InputController(player);
                 AddExecuteObject(_inputController);
             }
+
+            AddExecuteObject(cameraController);
         }
 
         public void AddExecuteObject(IExecute execute)

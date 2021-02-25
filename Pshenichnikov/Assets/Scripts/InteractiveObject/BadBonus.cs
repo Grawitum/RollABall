@@ -39,13 +39,6 @@ namespace RollABall
             playerBall = FindObjectOfType<PlayerBall>();
         }
 
-        //public override void Execute()
-        //{
-        //    if (!IsInteractable) { return; }
-        //    Fly();
-        //    Rotation();
-        //}
-
         public void Fly()
         {
             transform.localPosition = new Vector3(transform.localPosition.x,
