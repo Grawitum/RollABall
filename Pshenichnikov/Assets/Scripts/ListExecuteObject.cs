@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace RollABall
@@ -8,9 +9,13 @@ namespace RollABall
     {
         private IExecute[] _interactiveObjects;
         private int _index = -1;
-        private InteractiveObject _current;
+        //private InteractiveObject _current;
 
-        public ListExecuteObject()
+        private InputController _inputController;
+
+
+
+        public ListExecuteObject(PlayerBase player)
         {
             var interactiveObjects = Object.FindObjectsOfType<InteractiveObject>();
             for (var i = 0; i < interactiveObjects.Length; i++)
@@ -19,6 +24,12 @@ namespace RollABall
                 {
                     AddExecuteObject(interactiveObject);
                 }
+            }
+
+            if (Application.platform == RuntimePlatform.WindowsEditor)
+            {
+                _inputController = new InputController(player);
+                AddExecuteObject(_inputController);
             }
         }
 

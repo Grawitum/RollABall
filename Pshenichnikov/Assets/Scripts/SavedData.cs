@@ -8,10 +8,6 @@ namespace RollABall
     public sealed class SavedData
     {
 
-        //Application.dataPath;             // Содержит путь к папке игровых данных
-        //Application.persistentDataPath;   // Путь к постоянной директории данных
-        //Application.streamingAssetsPath;  // Путь к папке StreamingAssets
-        //Application.temporaryCachePath;   // Путь к временным данным/директории кэша
         public string Name;
         public Vector3Serializable Position;
         public bool IsEnabled;

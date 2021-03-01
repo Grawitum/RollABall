@@ -43,12 +43,5 @@ namespace RollABall
         {
             transform.Rotate(Vector3.up * (Time.deltaTime * _speedRotation), Space.World);
         }
-
-        public override void Execute()
-        {
-            if (!IsInteractable) { return; }
-            Fly();
-            Rotation();
-        }
     }
 }

@@ -19,7 +19,7 @@ namespace RollABall
             _offset = _mainCamera.position - _player.position;
         }
 
-        public void Execute()
+        public void Execute(float deltaTime)
         {
             _mainCamera.position = _player.position + _offset;
         }

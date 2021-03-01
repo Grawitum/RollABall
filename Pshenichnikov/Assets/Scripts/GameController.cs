@@ -11,26 +11,19 @@ namespace RollABall
     public sealed class GameController : MonoBehaviour, IDisposable
     {
         public PlayerType PlayerType = PlayerType.Ball;
-        private ListExecuteObject _interactiveObject;
+        private ListInteractiveObject _interactiveObject;
+        private ListExecuteObject _executeObject;
         private DisplayEndGame _displayEndGame;
         private DisplayBonuses _displayBonuses;
         private CameraController _cameraController;
-        private InputController _inputController;
+        //private InputController _inputController;
         private Reference _reference;
         private MapFactory _mapFactory;
         private InteractiveObjectFactory _interactiveObjectFactory; 
         private int allPoint;
+        private ExecutController executController;
 
         private int _countBonuses;
-
-        //private InteractiveObject[] _interactiveObjects;
-        //public GameObject Particle;
-
-        //public Text _finishGameLabel;
-        //private DisplayEndGame _displayEndGame;
-        //private CameraController _cameraController;
-
-        //public Player player;
 
         private void Awake()
         {
@@ -41,13 +34,12 @@ namespace RollABall
             GameObject useBonus = null;
             useBonus = _interactiveObjectFactory.UseBonus;
 
-            _interactiveObject = new ListExecuteObject();
+            _interactiveObject = new ListInteractiveObject();
+            executController = new ExecutController(_interactiveObject);
+            //_executeObject = new ListExecuteObject();
 
             _reference = new Reference();
             _mapFactory = new MapFactory();
-            //_interactiveObjectFactory = new InteractiveObjectFactory();
-
-            //_reference.Map;  фактори с авэйком, туда карту и бонусы
 
             PlayerBase player = null;
             if(PlayerType == PlayerType.Ball)
@@ -55,20 +47,21 @@ namespace RollABall
                 player = _reference.PlayerBall;
             }
 
+            _executeObject = new ListExecuteObject(player);
+
             GameObject map = null;
             map = _mapFactory.Map;
 
-            //GameObject bonus = null;
-            //bonus = _interactiveObjectFactory.GoodBonus;
-
             _cameraController = new CameraController(player.transform, _reference.MainCamera.transform);
-            _interactiveObject.AddExecuteObject(_cameraController);
+            _executeObject.AddExecuteObject(_cameraController);
 
-            if (Application.platform == RuntimePlatform.WindowsEditor)
-            {
-                _inputController = new InputController(player);
-                _interactiveObject.AddExecuteObject(_inputController);
-            }
+            //if (Application.platform == RuntimePlatform.WindowsEditor)
+            //{
+            //    _inputController = new InputController(player);
+            //    _executeObject.AddExecuteObject(_inputController);
+            //}
+
+            //executController = new ExecutController(_interactiveObject);
 
             _displayEndGame = new DisplayEndGame(_reference.EndGame);
             _displayBonuses = new DisplayBonuses(_reference.Bonuse);
@@ -83,7 +76,6 @@ namespace RollABall
                 if (o is GoodBonus goodBonus)
                 {
                     allPoint += goodBonus.Point;
-                    //print(allPoint);
                     goodBonus.OnPointChange += AddBonuse;
                 }
             }
@@ -94,11 +86,6 @@ namespace RollABall
 
 
         }
-
-        //public void Test()
-        //{ 
-        //    Instantiate(Particle,new Vector3(player.transform.position.x,player.transform.position.y), Quaternion.identity);
-        //}
 
         private void RestartGame()
         {
@@ -126,18 +113,20 @@ namespace RollABall
         private void Update()
         {
             var deltaTime = Time.deltaTime;
-            for (var i = 0; i < _interactiveObject.Length; i++)
-            {
-                var interactiveObject = _interactiveObject[i];
 
-                if (interactiveObject == null)
+            executController.Execute(deltaTime);
+
+            for (var i = 0; i < _executeObject.Length; i++)
+            {
+                var executeObject = _executeObject[i];
+
+                if (executeObject == null)
                 {
                     continue;
                 }
-                interactiveObject.Execute();
-                //interactiveObject.Execute(deltaTime);
+                executeObject.Execute(deltaTime);
             }
-        }
+            }
 
         public void Dispose()
         {

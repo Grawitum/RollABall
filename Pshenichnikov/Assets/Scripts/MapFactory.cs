@@ -17,7 +17,6 @@ namespace RollABall
                     var gameObject = Resources.Load<GameObject>("Map/Map");
                     _map = Object.Instantiate(gameObject);
                 }
-
                 return _map;
             }
         }
