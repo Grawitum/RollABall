@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -35,7 +33,6 @@ namespace RollABall
         }
 
         protected abstract void Interaction();
-        //public abstract void Execute();
 
         private void Start()
         {
@@ -45,6 +42,29 @@ namespace RollABall
             {
                 renderer.material.color = _color;
             }
+        }
+
+        protected private void Fly(float lengthFly)
+        {
+            transform.localPosition = new Vector3(transform.localPosition.x,
+                Mathf.PingPong(Time.time, lengthFly),
+                transform.localPosition.z);
+        }
+
+        protected private void Rotation(float speedRotation)
+        {
+            transform.Rotate(Vector3.up * (Time.deltaTime * speedRotation), Space.World);
+        }
+
+        protected private void Flicker(Material material)
+        {
+            material.color = new Color(material.color.r, material.color.g, material.color.b,
+                Mathf.PingPong(Time.time, 1.0f));
+        }
+
+        private protected  PlayerBall FindPlayer()
+        {
+            return FindObjectOfType<PlayerBall>();
         }
 
     }

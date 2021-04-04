@@ -4,7 +4,7 @@ using static UnityEngine.Random;
 
 namespace RollABall
 {
-    public sealed class GoodBonus : InteractiveObject, IFly, IFlicker
+    public sealed class GoodBonus : InteractiveObject, IMove
     {
         public int Point;
         public event Action<int> OnPointChange = delegate (int i) { };
@@ -13,13 +13,6 @@ namespace RollABall
 
         [Tooltip("path")]
         [SerializeField] public string path;
-
-
-        //private DisplayBonuses _displayBonuses;
-        //private GoodBonus[] _goodBonus;
-
-        //public delegate void EventUseObject();
-        //public event EventUseObject _useObject;
 
         private void Awake()
         {
@@ -33,18 +26,10 @@ namespace RollABall
             OnPointChange.Invoke(Point);
         }
 
-        public void Fly()
+        public void Move()
         {
-            transform.localPosition = new Vector3(transform.localPosition.x,
-                Mathf.PingPong(Time.time, _lengthFly),
-                transform.localPosition.z);
-        }
-
-
-        public void Flicker()
-        {
-            _material.color = new Color(_material.color.r, _material.color.g, _material.color.b,
-                Mathf.PingPong(Time.time, 1.0f));
+            base.Fly(_lengthFly);
+            base.Flicker(_material);
         }
     }
 }

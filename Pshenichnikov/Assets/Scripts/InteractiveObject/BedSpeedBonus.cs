@@ -1,15 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace RollABall
 {
-    public sealed class BadSpeedBonus : InteractiveObject, IFly, IRotation
+    public sealed class BadSpeedBonus : InteractiveObject, IMove
     {
         private float _speedRotation;
         private float _lengthFly;
         private PlayerBall playerBall;
-
 
         private void Awake()
         {
@@ -22,26 +19,15 @@ namespace RollABall
         {
             if(playerBall == null)
             {
-                FindPlayer();
+                playerBall = base.FindPlayer();
             }
             playerBall.Speed -= 1.0f;
         }
-
-        private void FindPlayer()
+  
+        public void Move()
         {
-            playerBall = FindObjectOfType<PlayerBall>();
-        }
-
-        public void Fly()
-        {
-            transform.localPosition = new Vector3(transform.localPosition.x,
-                Mathf.PingPong(Time.time, _lengthFly),
-                transform.localPosition.z);
-        }
-
-        public void Rotation()
-        {
-            transform.Rotate(Vector3.up * (Time.deltaTime * _speedRotation), Space.World);
+            base.Fly(_lengthFly);
+            base.Rotation(_speedRotation);
         }
     }
 }

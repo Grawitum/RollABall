@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace RollABall
 {
-    public class ImmortalityBonus : InteractiveObject, IFly, IFlicker
+    public class ImmortalityBonus : InteractiveObject, IMove
     {
         private Material _material;
         private float _lengthFly;
@@ -21,27 +19,15 @@ namespace RollABall
         {
             if (playerBall == null)
             {
-                FindPlayer();
+                playerBall = base.FindPlayer();
             }
             playerBall.Immortality = true;
         }
 
-        private void FindPlayer()
+        public void Move()
         {
-            playerBall = FindObjectOfType<PlayerBall>();
-        }
-
-        public void Fly()
-        {
-            transform.localPosition = new Vector3(transform.localPosition.x,
-                Mathf.PingPong(Time.time, _lengthFly),
-                transform.localPosition.z);
-        }
-
-        public void Flicker()
-        {
-            _material.color = new Color(_material.color.r, _material.color.g, _material.color.b,
-                Mathf.PingPong(Time.time, 1.0f));
+            base.Fly(_lengthFly);
+            base.Flicker(_material);
         }
     }
 }

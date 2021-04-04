@@ -4,7 +4,7 @@ using Random = UnityEngine.Random;
 
 namespace RollABall
 {
-    public sealed class BadBonus : InteractiveObject, IFly, IRotation
+    public sealed class BadBonus : InteractiveObject, IMove
     {
         public event Action<string, Color> OnCaughtPlayerChange = delegate (string str, Color color) { };
         private float _lengthFly;
@@ -22,7 +22,7 @@ namespace RollABall
         {
             if (playerBall == null)
             {
-                FindPlayer();
+                playerBall = base.FindPlayer();
             }
             if (!playerBall.Immortality)
             {
@@ -34,22 +34,10 @@ namespace RollABall
             }
         }
 
-        private void FindPlayer()
+        public void Move()
         {
-            playerBall = FindObjectOfType<PlayerBall>();
+            base.Fly(_lengthFly);
+            base.Rotation(_speedRotation);
         }
-
-        public void Fly()
-        {
-            transform.localPosition = new Vector3(transform.localPosition.x,
-                Mathf.PingPong(Time.time, _lengthFly),
-                transform.localPosition.z);
-        }
-
-        public void Rotation()
-        {
-            transform.Rotate(Vector3.up * (Time.deltaTime * _speedRotation), Space.World);
-        }
-
     }
 }

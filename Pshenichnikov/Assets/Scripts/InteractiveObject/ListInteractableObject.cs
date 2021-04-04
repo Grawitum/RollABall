@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace RollABall
@@ -26,6 +25,14 @@ namespace RollABall
             _index++;
             return true;
         }
+
+        public InteractiveObject this[int index]
+        {
+            get => _interactiveObjects[index];
+            private set => _interactiveObjects[index] = value;
+        }
+
+        public int Length => _interactiveObjects.Length;
 
         public void Reset() => _index = -1;
 
