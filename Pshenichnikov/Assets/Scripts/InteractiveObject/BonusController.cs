@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace RollABall
 {
     public class BonusController 
     {
-        private int allPoint;
+        private int _allPoint;
         private int _countBonuses;
         private DisplayEndGame _displayEndGame;
         private DisplayBonuses _displayBonuses;
@@ -32,7 +31,7 @@ namespace RollABall
 
                 if (_bonuses[i] is GoodBonus goodBonus)
                 {
-                    allPoint += goodBonus.Point;
+                    _allPoint += goodBonus.Point();
                     goodBonus.OnPointChange += AddBonuse;
                 }
             }
@@ -42,12 +41,6 @@ namespace RollABall
         {
             _restartBotton.SetActive(true);
             Time.timeScale = 0.0f;
-        }
-
-        private void RestartGame()
-        {
-            SceneManager.LoadScene(sceneBuildIndex: 0);
-            Time.timeScale = 1.0f;
         }
 
         public void Dispose()
@@ -71,7 +64,7 @@ namespace RollABall
         {
             _countBonuses += value;
             _displayBonuses.Display(_countBonuses);
-            if (_countBonuses >= allPoint)
+            if (_countBonuses >= _allPoint)
             {
                 _displayEndGame.GameWin(_countBonuses);
                 Time.timeScale = 0.0f;

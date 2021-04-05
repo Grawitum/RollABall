@@ -6,22 +6,22 @@ namespace RollABall
     {
         private float _speedRotation;
         private float _lengthFly;
-        private PlayerBall playerBall;
+        private PlayerBall _playerBall;
 
         private void Awake()
         {
             _speedRotation = Random.Range(10.0f, 50.0f);
             _lengthFly = Random.Range(1.0f, 3.0f);
-            FindPlayer();
+            base.FindPlayer();
         }
 
         protected override void Interaction()
         {
-            if(playerBall == null)
+            if(_playerBall == null)
             {
-                playerBall = base.FindPlayer();
+                _playerBall = base.FindPlayer();
             }
-            playerBall.Speed -= 1.0f;
+            _playerBall.Speed -= 1.0f;
         }
   
         public void Move()

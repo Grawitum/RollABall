@@ -7,7 +7,6 @@ namespace RollABall
     {
         private InteractiveObject[] _interactiveObjects;
         private int _index = -1;
-        private InteractiveObject _current;
 
         public ListInteractableObject()
         {

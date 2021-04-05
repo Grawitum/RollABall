@@ -6,12 +6,12 @@ namespace RollABall
     {
         public int Compare(GoodBonus x, GoodBonus y)
         {
-            if (x.Point < y.Point)
+            if (x.Point() < y.Point())
             {
                 return 1;
             }
 
-            if (x.Point > y.Point)
+            if (x.Point() > y.Point())
             {
                 return -1;
             }

@@ -1,27 +1,18 @@
-﻿using UnityEngine;
+﻿    using UnityEngine;
 
 namespace RollABall
 {
     public class MapFactory
     {
-        private GameObject _map;
-
         public MapFactory()
         {
-            _ = Map;
+            Map();
         }
 
-        public GameObject Map
+        private void Map()
         {
-            get
-            {
-                if (_map == null)
-                {
-                    var gameObject = Resources.Load<GameObject>("Map/Map");
-                    _map = Object.Instantiate(gameObject);
-                }
-                return _map;
-            }
+            var map = Resources.Load<GameObject>("Map/Map");
+            Object.Instantiate(map);
         }
     }
 }

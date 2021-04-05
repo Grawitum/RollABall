@@ -12,20 +12,14 @@ namespace RollABall
 
         private CameraController _cameraController;
         private Reference _reference;
-        private InteractiveObjectFactory _interactiveObjectFactory;
 
         public Factory()
         {
-            _interactiveObjectFactory = new InteractiveObjectFactory();
-            GameObject bonus = null;
-            bonus = _interactiveObjectFactory.GoodBonus;
-
-            GameObject useBonus = null;
-            useBonus = _interactiveObjectFactory.UseBonus;
+            new MapFactory();
+            new InteractiveObjectFactory();
+            new MiniMapFactory();
 
             _reference = new Reference();
-
-            _ = new MapFactory();
 
             if (_playerType == PlayerType.Ball)
             {
@@ -40,9 +34,7 @@ namespace RollABall
             _reference.RestartButton.onClick.AddListener(RestartGame);
             _reference.RestartButton.gameObject.SetActive(false);
 
-            _ = new MiniMapFactory();
-
-            _ = new BonusController(_displayEndGame, _displayBonuses, _reference.RestartButton.gameObject);
+            new BonusController(_displayEndGame, _displayBonuses, _reference.RestartButton.gameObject);
         }
 
         public CameraController cameraController

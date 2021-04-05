@@ -6,22 +6,22 @@ namespace RollABall
     {
         private Material _material;
         private float _lengthFly;
-        private PlayerBall playerBall;
+        private PlayerBall _playerBall;
 
         private void Awake()
         {
             _material = GetComponent<Renderer>().material;
             _lengthFly = Random.Range(1.0f, 3.0f);
-            FindPlayer();
+            base.FindPlayer();
         }
 
         protected override void Interaction()
         {
-            if (playerBall == null)
+            if (_playerBall == null)
             {
-                playerBall = base.FindPlayer();
+                _playerBall = base.FindPlayer();
             }
-            playerBall.Speed += 1;
+            _playerBall.Speed += 1;
         }
 
         public void Move()

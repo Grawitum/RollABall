@@ -4,38 +4,22 @@ namespace RollABall
 {
     public class MiniMapFactory
     {
-        private Canvas _miniMapConvas;
-        private Camera _miniMapCamera;
         public MiniMapFactory()
         {
-            _ = MiniMapCanvas;
-            _ = MainMapCamera;
+            MainMapCamera();
+            MiniMapCanvas();
         }
 
-        public Camera MainMapCamera
-        {
-            get
-            {
-                if (_miniMapCamera == null)
-                {
-                    var gameObject = Resources.Load<Camera>("MiniMap/MiniMapCamera");
-                    _miniMapCamera = Object.Instantiate(gameObject);                  
-                }
-                return _miniMapCamera;
-            }
+        private void  MainMapCamera ()
+        {         
+            var miniMapCamera = Resources.Load<Camera>("MiniMap/MiniMapCamera");
+            Object.Instantiate(miniMapCamera);                               
         }
 
-        public Canvas MiniMapCanvas
+        private void MiniMapCanvas()
         {
-            get
-            {
-                if (_miniMapConvas == null)
-                {
-                    var gameObject = Resources.Load<Canvas>("MiniMap/MiniMapCanvas");
-                    _miniMapConvas = Object.Instantiate(gameObject);
-                }
-                return _miniMapConvas;
-            }
+            var minimapCanvas = Resources.Load<Canvas>("MiniMap/MiniMapCanvas");
+            Object.Instantiate(minimapCanvas);
         }
     }
 }

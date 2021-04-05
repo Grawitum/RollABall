@@ -12,7 +12,6 @@ namespace RollABall
         private Canvas _canvas;
         private Button _restartButton;
 
-
         public PlayerBall PlayerBall
         {
             get
@@ -26,7 +25,6 @@ namespace RollABall
                     var gameObject = Resources.Load<PlayerBall>("Player");
                     _playerBall = Object.Instantiate(gameObject);
                 }
-
                 return _playerBall;
             }
         }
@@ -66,7 +64,6 @@ namespace RollABall
                     var gameObject = Resources.Load<GameObject>("UI/Bonuse");
                     _bonuse = Object.Instantiate(gameObject, Canvas.transform);
                 }
-
                 return _bonuse;
             }
         }
@@ -80,7 +77,6 @@ namespace RollABall
                     var gameObject = Resources.Load<GameObject>("UI/EndGame");
                     _endGame = Object.Instantiate(gameObject, Canvas.transform);
                 }
-
                 return _endGame;
             }
         }
@@ -94,7 +90,6 @@ namespace RollABall
                     var gameObject = Resources.Load<Button>("UI/RestartButton");
                     _restartButton = Object.Instantiate(gameObject, Canvas.transform);
                 }
-
                 return _restartButton;
             }
         }
