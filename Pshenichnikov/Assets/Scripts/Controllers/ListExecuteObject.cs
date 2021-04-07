@@ -1,30 +1,20 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
-using Object = UnityEngine.Object;
+//using Object = UnityEngine.Object;
 
 namespace RollABall
 {
     public sealed class ListExecuteObject : IEnumerator, IEnumerable
     {
-        private IExecute[] _interactiveObjects;
+        private IExecute[] _executeObjects;
         private int _index = -1;
-        private InputController _inputController;
 
         public ListExecuteObject(PlayerBase player,CameraController cameraController)
         {
-            var interactiveObjects = Object.FindObjectsOfType<InteractiveObject>();
-            for (var i = 0; i < interactiveObjects.Length; i++)
-            {
-                if (interactiveObjects[i] is IExecute interactiveObject)
-                {
-                    AddExecuteObject(interactiveObject);
-                }
-            }
-
             if (Application.platform == RuntimePlatform.WindowsEditor)
             {
-                _inputController = new InputController(player);
+                var _inputController = new InputController(player);
                 AddExecuteObject(_inputController);
             }
 
@@ -33,26 +23,26 @@ namespace RollABall
 
         public void AddExecuteObject(IExecute execute)
         {
-            if (_interactiveObjects == null)
+            if (_executeObjects == null)
             {
-                _interactiveObjects = new[] { execute };
+                _executeObjects = new[] { execute };
                 return;
             }
-            Array.Resize(ref _interactiveObjects, Length + 1);
-            _interactiveObjects[Length - 1] = execute;
+            Array.Resize(ref _executeObjects, Length + 1);
+            _executeObjects[Length - 1] = execute;
         }
 
         public IExecute this[int index]
         {
-            get => _interactiveObjects[index];
-            private set => _interactiveObjects[index] = value;
+            get => _executeObjects[index];
+            private set => _executeObjects[index] = value;
         }
 
-        public int Length => _interactiveObjects.Length;
+        public int Length => _executeObjects.Length;
 
         public bool MoveNext()
         {
-            if (_index == _interactiveObjects.Length - 1)
+            if (_index == _executeObjects.Length - 1)
             {
                 Reset();
                 return false;
@@ -64,7 +54,7 @@ namespace RollABall
 
         public void Reset() => _index = -1;
 
-        public object Current => _interactiveObjects[_index];
+        public object Current => _executeObjects[_index];
 
         public IEnumerator GetEnumerator()
         {

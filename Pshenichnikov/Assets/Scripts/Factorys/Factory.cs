@@ -15,16 +15,17 @@ namespace RollABall
 
         public Factory()
         {
-            new MapFactory();
-            new InteractiveObjectFactory();
-            new MiniMapFactory();
-
             _reference = new Reference();
 
             if (_playerType == PlayerType.Ball)
             {
                 _player = _reference.PlayerBall;
             }
+
+            new MapFactory();
+            new InteractiveObjectFactory();
+            new MiniMapFactory();
+
 
             _cameraController = new CameraController(_player.transform, _reference.MainCamera.transform);
 

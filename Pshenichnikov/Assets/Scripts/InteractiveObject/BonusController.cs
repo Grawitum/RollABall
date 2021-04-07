@@ -9,10 +9,10 @@ namespace RollABall
         private DisplayEndGame _displayEndGame;
         private DisplayBonuses _displayBonuses;
         private GameObject _restartBotton;
-        private ListInteractableObject _bonuses;
+        private ListInteractiveObject _bonuses;
         public BonusController(DisplayEndGame displayEndGame, DisplayBonuses displayBonuses,GameObject restartBotton)
         {
-            _bonuses = new ListInteractableObject();
+            _bonuses = new ListInteractiveObject();
             _displayEndGame = displayEndGame;
             _displayBonuses = displayBonuses;
             _restartBotton = restartBotton;

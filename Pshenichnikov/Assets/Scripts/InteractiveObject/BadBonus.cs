@@ -4,7 +4,7 @@ using Random = UnityEngine.Random;
 
 namespace RollABall
 {
-    public sealed class BadBonus : InteractiveObject, IMove
+    public sealed class BadBonus : UseBonus, IMove
     {
         public event Action<string, Color> OnCaughtPlayerChange = delegate (string str, Color color) { };
         private float _lengthFly;
@@ -13,17 +13,14 @@ namespace RollABall
 
         private void Awake()
         {
+            
             _lengthFly = Random.Range(1.0f, 5.0f);
             _speedRotation = Random.Range(10.0f, 50.0f);
-            base.FindPlayer();
+            _playerBall = base.FindPlayer();
         }
 
         protected override void Interaction()
         {
-            if (_playerBall == null)
-            {
-                _playerBall = base.FindPlayer();
-            }
             if (!_playerBall.Immortality)
             {
                 OnCaughtPlayerChange.Invoke(gameObject.name, _color);

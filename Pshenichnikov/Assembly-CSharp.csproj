@@ -73,7 +73,7 @@
     <Compile Include="Assets\Scripts\Controllers\GameController.cs" />
     <Compile Include="Assets\Scripts\MiniMap\MiniMap.cs" />
     <Compile Include="Assets\Scripts\Save\StreamData.cs" />
-    <Compile Include="Assets\HW5\HW5Main.cs" />
+    <Compile Include="Assets\Scripts\test1\HW5Main.cs" />
     <Compile Include="Assets\Scripts\Managers\AxisManager.cs" />
     <Compile Include="Assets\Scripts\Save\SerializableXMLData.cs" />
     <Compile Include="Assets\Scripts\Interface\IMove.cs" />
@@ -81,40 +81,40 @@
     <Compile Include="Assets\Scripts\Player\PlayerBase.cs" />
     <Compile Include="Assets\Scripts\InteractiveObject\InteractiveObject.cs" />
     <Compile Include="Assets\Scripts\Save\SaveBedDataRepository.cs" />
-    <Compile Include="Assets\HW5\HW5Task3.cs" />
+    <Compile Include="Assets\Scripts\test1\HW5Task3.cs" />
     <Compile Include="Assets\Scripts\Save\Crypto.cs" />
-    <Compile Include="Assets\HW7\MyScriptEditor.cs" />
-    <Compile Include="Assets\HW5\MyExpansion.cs" />
+    <Compile Include="Assets\Scripts\test2\MyScriptEditor.cs" />
+    <Compile Include="Assets\Scripts\test1\MyExpansion.cs" />
     <Compile Include="Assets\Scripts\Interface\IAction.cs" />
     <Compile Include="Assets\Scripts\Save\SavedData.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerBall.cs" />
-    <Compile Include="Assets\Scripts\InteractiveObject\ListInteractableObject.cs" />
     <Compile Include="Assets\Scripts\Controllers\InputController.cs" />
     <Compile Include="Assets\Scripts\Factorys\Reference.cs" />
-    <Compile Include="Assets\HW7\MenuItems.cs" />
+    <Compile Include="Assets\Scripts\test2\MenuItems.cs" />
     <Compile Include="Assets\Scripts\InteractiveObject\BedSpeedBonus.cs" />
     <Compile Include="Assets\Scripts\Interface\IRotation.cs" />
     <Compile Include="Assets\Scripts\Interface\IInteractable.cs" />
     <Compile Include="Assets\Scripts\InteractiveObject\SpeedBonus.cs" />
     <Compile Include="Assets\Scripts\Displays\DisplayEndGame.cs" />
     <Compile Include="Assets\Scripts\InteractiveObject\BonusController.cs" />
-    <Compile Include="Assets\HW5\HW5Task2.cs" />
+    <Compile Include="Assets\Scripts\test1\HW5Task2.cs" />
     <Compile Include="Assets\Scripts\Factorys\InteractiveObjectFactory.cs" />
     <Compile Include="Assets\Scripts\Controllers\ListExecuteObject.cs" />
     <Compile Include="Assets\Scripts\Interface\IData.cs" />
-    <Compile Include="Assets\HW7\MyScript.cs" />
+    <Compile Include="Assets\Scripts\test2\MyScript.cs" />
     <Compile Include="Assets\Scripts\Interface\IFlicker.cs" />
     <Compile Include="Assets\Scripts\Interface\IInitialization.cs" />
     <Compile Include="Assets\Scripts\Save\JsonData.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraController.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerType.cs" />
-    <Compile Include="Assets\HW7\MyWindow.cs" />
+    <Compile Include="Assets\Scripts\test2\MyWindow.cs" />
     <Compile Include="Assets\Scripts\InteractiveObject\GoodBonus.cs" />
     <Compile Include="Assets\Scripts\Save\SaveGoodDataRepository.cs" />
     <Compile Include="Assets\Scripts\Controllers\ExecutController.cs" />
+    <Compile Include="Assets\Scripts\InteractiveObject\UseBonus.cs" />
   </ItemGroup>
   <ItemGroup>
-     <None Include="Assets\HW5\HW5.txt" />
+     <None Include="Assets\Scripts\test1\HW5.txt" />
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.1.12f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
